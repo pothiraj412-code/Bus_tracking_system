@@ -1,0 +1,198 @@
+/* SignupPage.css — PSG iTech Bus Tracker Sign Up Styles */
+
+/* ── Progress stepper ──────────────────────────────────── */
+.signup-stepper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    margin-bottom: 2rem;
+}
+
+.step-node {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+}
+
+.step-circle {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 2px solid #334155;
+    background: #0f172a;
+    color: #64748b;
+    font-weight: 700;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.step-circle.active {
+    border-color: #3b82f6;
+    background: linear-gradient(135deg, #2563eb, #4f46e5);
+    color: white;
+    box-shadow: 0 0 16px rgba(59, 130, 246, 0.5);
+}
+
+.step-circle.done {
+    border-color: #22c55e;
+    background: #166534;
+    color: #4ade80;
+}
+
+.step-label {
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #475569;
+    margin-top: 6px;
+    white-space: nowrap;
+}
+
+.step-label.active {
+    color: #3b82f6;
+}
+
+.step-label.done {
+    color: #22c55e;
+}
+
+.step-connector {
+    width: 60px;
+    height: 2px;
+    background: #1e293b;
+    margin-bottom: 24px;
+    transition: background 0.3s ease;
+}
+
+.step-connector.done {
+    background: #22c55e;
+}
+
+/* ── Stop cards (radio buttons styled as cards) ───────── */
+.stop-card {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 14px;
+    border-radius: 12px;
+    border: 2px solid #1e293b;
+    background: #0f172a;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin-bottom: 8px;
+}
+
+.stop-card:hover {
+    border-color: #3b82f6;
+    background: #1e293b;
+}
+
+.stop-card.selected {
+    border-color: #3b82f6;
+    background: #1e3a5f;
+    box-shadow: 0 0 12px rgba(59, 130, 246, 0.2);
+}
+
+.stop-card input[type="radio"] {
+    accent-color: #3b82f6;
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+}
+
+.stop-seq {
+    font-size: 10px;
+    font-weight: 700;
+    color: #64748b;
+    background: #1e293b;
+    padding: 2px 7px;
+    border-radius: 20px;
+    min-width: 28px;
+    text-align: center;
+}
+
+.stop-name {
+    font-size: 14px;
+    font-weight: 500;
+    color: #e2e8f0;
+    flex: 1;
+}
+
+.stop-college {
+    font-size: 10px;
+    font-weight: 700;
+    color: #22c55e;
+    padding: 2px 8px;
+    border-radius: 20px;
+    background: #14532d;
+    white-space: nowrap;
+}
+
+/* ── Role tab buttons ─────────────────────────────────── */
+.role-tabs {
+    display: flex;
+    background: #0f172a;
+    border: 1px solid #1e293b;
+    border-radius: 14px;
+    padding: 4px;
+    gap: 4px;
+    margin-bottom: 1.5rem;
+}
+
+.role-tab {
+    flex: 1;
+    padding: 10px 8px;
+    border-radius: 10px;
+    border: none;
+    background: transparent;
+    color: #64748b;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    transition: all 0.25s ease;
+}
+
+.role-tab:hover {
+    color: #94a3b8;
+    background: #1e293b;
+}
+
+.role-tab.active {
+    background: linear-gradient(135deg, #2563eb, #4f46e5);
+    color: white;
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+}
+
+/* ── Scrollable stops list ───────────────────────────── */
+.stops-list {
+    max-height: 280px;
+    overflow-y: auto;
+    padding-right: 4px;
+    scrollbar-width: thin;
+    scrollbar-color: #334155 transparent;
+}
+
+.stops-list::-webkit-scrollbar {
+    width: 4px;
+}
+
+.stops-list::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.stops-list::-webkit-scrollbar-thumb {
+    background: #334155;
+    border-radius: 4px;
+}
+

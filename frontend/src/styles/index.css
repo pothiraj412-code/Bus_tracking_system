@@ -1,0 +1,297 @@
+@import "tailwindcss";
+
+@theme {
+  --color-border: hsl(214.3 31.8% 91.4%);
+  --color-input: hsl(214.3 31.8% 91.4%);
+  --color-ring: hsl(221.2 83.2% 53.3%);
+  --color-background: hsl(210 40% 98%);
+  --color-foreground: hsl(222.2 84% 4.9%);
+
+  --color-primary: hsl(221.2 83.2% 53.3%);
+  --color-primary-foreground: hsl(210 40% 98%);
+
+  --color-secondary: hsl(210 40% 96.1%);
+  --color-secondary-foreground: hsl(222.2 47.4% 11.2%);
+
+  --color-muted: hsl(210 40% 96.1%);
+  --color-muted-foreground: hsl(215.4 16.3% 46.9%);
+
+  --color-accent: hsl(210 40% 96.1%);
+  --color-accent-foreground: hsl(222.2 47.4% 11.2%);
+
+  --color-destructive: hsl(0 84.2% 60.2%);
+  --color-destructive-foreground: hsl(210 40% 98%);
+
+  --radius-lg: 0.75rem;
+  --radius-md: calc(0.75rem - 2px);
+  --radius-sm: calc(0.75rem - 4px);
+}
+
+@layer base {
+
+  *,
+  ::after,
+  ::before {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground transition-colors duration-300;
+  }
+
+  /* Core Design Tokens - Essential for Dashboards and Alignment */
+  :root {
+    --bg: var(--color-background);
+    --text: var(--color-foreground);
+    --border: var(--color-border);
+    --primary: var(--color-primary);
+    --secondary: var(--color-secondary);
+    --muted: var(--color-muted);
+    --accent: hsl(262 83% 58%);
+    /* Brand Accent Color */
+    --card: #ffffff;
+    --elevated: #ffffff;
+    --divider: #f1f5f9;
+    --text-secondary: hsl(215.4 16.3% 46.9%);
+    --text-muted: hsl(215.4 16.3% 56.9%);
+
+    --success: #10b981;
+    --success-light: #ecfdf5;
+    --error: #ef4444;
+    --error-light: #fef2f2;
+    --warning: #f59e0b;
+    --warning-light: #fffbeb;
+    --info: #3b82f6;
+    --info-light: #eff6ff;
+
+    --space-1: 0.25rem;
+    --space-2: 0.5rem;
+    --space-3: 0.75rem;
+    --space-4: 1rem;
+    --space-5: 1.25rem;
+    --space-6: 1.5rem;
+    --space-7: 1.75rem;
+    --space-8: 2rem;
+
+    --radius-sm: 0.375rem;
+    --radius-md: 0.5rem;
+    --radius-lg: 0.75rem;
+    --radius-xl: 1rem;
+    --radius-full: 9999px;
+
+    --z-sticky: 100;
+    --z-modal: 1000;
+
+    --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-base: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  }
+
+  .dark {
+    --bg: hsl(222.2 84% 4.9%);
+    --text: hsl(210 40% 98%);
+    --card: hsl(222.2 84% 4.9%);
+    --elevated: hsl(217.2 32.6% 17.5%);
+    --border: hsl(217.2 32.6% 17.5%);
+    --divider: hsl(217.2 32.6% 17.5%);
+    --text-secondary: hsl(215 20.2% 65.1%);
+    --text-muted: hsl(215 20.2% 55.1%);
+
+    --success-light: rgba(16, 185, 129, 0.1);
+    --error-light: rgba(239, 68, 68, 0.1);
+    --warning-light: rgba(245, 158, 11, 0.1);
+    --info-light: rgba(59, 130, 246, 0.1);
+  }
+}
+
+/* Common Layout & UI Components for Dashboards */
+@layer components {
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 44px;
+    padding: 0 var(--space-4);
+    border-radius: var(--radius-md);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    border: 1px solid transparent;
+    gap: var(--space-2);
+    font-size: var(--text-base);
+  }
+
+  .btn:active {
+    transform: scale(0.98);
+  }
+
+  .btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+  .btn-primary {
+    background-color: var(--primary);
+    color: white;
+  }
+
+  .btn-primary:hover:not(:disabled) {
+    filter: brightness(1.1);
+    box-shadow: var(--shadow-md);
+  }
+
+  .btn-secondary {
+    background-color: var(--card);
+    color: var(--text);
+    border-color: var(--border);
+  }
+
+  .btn-secondary:hover:not(:disabled) {
+    background-color: var(--divider);
+    border-color: var(--border-hover);
+  }
+
+  /* I'M COMING Button: High-Contrast Black/White variant */
+  .btn-success {
+    background-color: #000000;
+    color: #ffffff;
+    border-color: #000000;
+  }
+
+  .btn-success:hover:not(:disabled) {
+    background-color: #333333;
+    box-shadow: var(--shadow-md);
+  }
+
+  .dark .btn-success {
+    background-color: #ffffff;
+    color: #000000;
+    border-color: #ffffff;
+  }
+
+  .dark .btn-success:hover:not(:disabled) {
+    background-color: #f1f5f9;
+  }
+
+  .btn-danger {
+    background-color: var(--error);
+    color: white;
+  }
+
+  /* Shared Dashboard Header & Content Structure */
+  .dashboard-header {
+    background: var(--card);
+    border-bottom: 1px solid var(--border);
+    padding: 10px 0;
+    position: sticky;
+    top: 0;
+    z-index: var(--z-sticky);
+    backdrop-filter: blur(12px);
+  }
+
+  .header-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 var(--space-6);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .header-left {
+    flex: 1;
+  }
+
+  .header-right {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+  }
+
+  .dashboard-title {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text);
+    margin: 0;
+  }
+
+  .dashboard-subtitle {
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    margin: 0;
+  }
+
+  .dashboard-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: var(--space-8) var(--space-6);
+  }
+
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    padding: var(--space-6);
+    transition: all var(--transition-base);
+  }
+
+  .badge {
+    padding: 0.25rem 0.625rem;
+    border-radius: var(--radius-full);
+    font-size: 0.75rem;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    white-space: nowrap;
+  }
+
+  .badge-success {
+    background: var(--success-light);
+    color: var(--success);
+  }
+
+  .badge-error {
+    background: var(--error-light);
+    color: var(--error);
+  }
+
+  .badge-danger {
+    background: var(--error-light);
+    color: var(--error);
+  }
+
+  .badge-warning {
+    background: var(--warning-light);
+    color: var(--warning);
+  }
+
+  .badge-info {
+    background: var(--info-light);
+    color: var(--info);
+  }
+
+  /* Utilities */
+  .text-success {
+    color: var(--success);
+  }
+
+  .text-error {
+    color: var(--error);
+  }
+
+  .text-warning {
+    color: var(--warning);
+  }
+
+  .text-muted {
+    color: var(--text-muted);
+  }
+}
